@@ -14,7 +14,7 @@ from sklearn.ensemble import RandomForestClassifier
 
 class AI_models :
     def __init__(self, *args, **kwargs) :
-        self.dataset = "Crop_recommendation.csv"
+        self.dataset = "Utils/Crop_recommendation.csv"
         self.ordered_set = ["N", "temperature", "humidity", "rainfall", "P", "K", "ph"]
     
     

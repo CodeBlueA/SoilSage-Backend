@@ -53,7 +53,7 @@ class Soil :
     
     def find_soil_data_panchayat(self, panchayat) :
         # Rea the dataset
-        df = pd.read_csv("Ernakulam.csv")
+        df = pd.read_csv("Utils/Ernakulam.csv")
         # Locate all data belonging to the same panchayt
         results = df.loc[df["Panchayaths"] == panchayat.capitalize().strip()]
         results = {i: list(results[i])[0] for i in results}

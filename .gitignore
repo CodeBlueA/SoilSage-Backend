@@ -1,2 +1,4 @@
 .env
 rough.py
+.gitignore
+__pycache__/

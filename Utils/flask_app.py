@@ -1,7 +1,7 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS
-from support_models import Weather, Soil
-from crop_recommendation_model import AI_models
+from Utils.support_models import Weather, Soil
+from Utils.crop_recommendation_model import AI_models
 
 
 app = Flask(__name__)
