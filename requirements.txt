@@ -13,7 +13,6 @@ Flask
 Flask-Cors
 frozenlist==1.3.3
 geojson==2.5.0
-gpt4all
 greenlet==3.0.1
 idna==3.4
 importlib-metadata
