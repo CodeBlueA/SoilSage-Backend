@@ -1,11 +1,9 @@
 import pyowm
 import os
-from dotenv import load_dotenv
+import pandas as pd
 from meteostat import Hourly, Point
 from datetime import datetime, timedelta
 
-
-load_dotenv()
 
 
 class Weather :
@@ -42,8 +40,23 @@ class Weather :
         prcp_mean = data["prcp"].mean() * 25.4 * 30
         
         # compiling together the gather weather data
-        weather_data["Rainfall"] = rain if prcp_mean == 0 else prcp_mean
-        weather_data["Temperature"] = temp_mean
-        weather_data["Humidity"] = rhum_mean
+        weather_data["rainfall"] = rain if prcp_mean == 0 or pd.isna(prcp_mean) else prcp_mean
+        weather_data["temperature"] = temp_mean if not pd.isna(temp_mean) else 26
+        weather_data["humidity"] = rhum_mean if not pd.isna(rhum_mean) else 71
         
         return weather_data
+    
+
+class Soil :
+    def __init__(self, *args, **kwargs) :
+        pass
+    
+    def find_soil_data_panchayat(self, panchayat) :
+        # Rea the dataset
+        df = pd.read_csv("Ernakulam.csv")
+        # Locate all data belonging to the same panchayt
+        results = df.loc[df["Panchayaths"] == panchayat.capitalize().strip()]
+        results = {i: list(results[i])[0] for i in results}
+        del results["Panchayaths"]
+        
+        return results
